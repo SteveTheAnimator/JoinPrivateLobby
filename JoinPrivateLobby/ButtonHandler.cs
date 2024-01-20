@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using GorillaLocomotion;
 using Utilla;
 using System.IO;
@@ -17,7 +17,6 @@ namespace JoinPrivateLobby
         public string button;
         private float touchTime = 0f;
         private const float debounceTime = 0.25f;
-        string otherString = Plugin.favcode;
 
         void Start()
         {
@@ -33,17 +32,15 @@ namespace JoinPrivateLobby
                 if(button == "jointhelobby")
                 {
                     Utilla.Utils.RoomUtils.JoinPrivateLobby();
+                    Debug.Log("[JoinPrivateLobby] Joined a random private lobby.");
                 }
                 if(button == "leavethelobby")
                 {
                     PhotonNetworkController.Instance.AttemptDisconnect();
-                }
-                if(button == "jointhefavcode")
-                {
-                    Utilla.Utils.RoomUtils.JoinPrivateLobby(otherString);
+                    Debug.Log("[JoinPrivateLobby] Left a lobby.");
                 }
             }
         }
     }
 }
-// Credit to octoburr (def not stolen code!!!!1111!!!)
+// Credit to octoburr (https://github.com/OctoBurr/OctoCam/blob/1.0.1/OctoCam/ButtonHandler.cs)
